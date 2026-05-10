@@ -1,0 +1,10 @@
+.theme-green {
+    --primary: oklch(0.7 0.18 145);
+    --primary-foreground: oklch(1 0 0);
+    --ring: oklch(0.7 0.18 145);
+    --chart-1: oklch(0.7 0.18 145);
+}
+
+.theme-green.dark {
+    --primary: oklch(0.75 0.15 145);
+}

@@ -1,0 +1,10 @@
+.theme-orange {
+    --primary: oklch(0.7 0.19 40);
+    --primary-foreground: oklch(1 0 0);
+    --ring: oklch(0.7 0.19 40);
+    --chart-1: oklch(0.7 0.19 40);
+}
+
+.theme-orange.dark {
+    --primary: oklch(0.75 0.16 40);
+}
