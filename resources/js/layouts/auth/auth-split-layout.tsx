@@ -1,14 +1,31 @@
-import { Link, usePage } from '@inertiajs/react';
 import AppLogoIcon from '@/components/app-logo-icon';
 import { home } from '@/routes';
 import type { AuthLayoutProps } from '@/types';
+import { Link, usePage } from '@inertiajs/react';
+import { useEffect } from 'react';
+import { toast } from 'sonner';
 
 export default function AuthSplitLayout({
     children,
     title,
     description,
 }: AuthLayoutProps) {
-    const { name } = usePage().props;
+    const {
+        name,
+        flash: { success, error },
+    } = usePage<any>().props;
+
+    useEffect(() => {
+        if (success) {
+            toast.success(success);
+        }
+
+        if (error) {
+            toast.error(error);
+        }
+    }, [success, error]);
+
+    console.log(success, error);
 
     return (
         <div className="relative grid h-dvh flex-col items-center justify-center px-8 sm:px-0 lg:max-w-none lg:grid-cols-2 lg:px-0">
@@ -23,7 +40,7 @@ export default function AuthSplitLayout({
                 </Link>
             </div>
             <div className="w-full lg:p-8">
-                <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
+                <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-87.5">
                     <Link
                         href={home()}
                         className="relative z-20 flex items-center justify-center lg:hidden"

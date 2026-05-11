@@ -7,7 +7,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\Settings\SiteSettingsController;
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('admin')->as('admin.')->middleware(['auth', 'verified'])->group(function () {
+Route::prefix('admin')->as('admin.')->middleware(['auth', 'verified', 'auth.admin'])->group(function () {
     Route::redirect('/', '/admin/dashboard')->name('index');
 
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -21,14 +21,9 @@ Route::prefix('admin')->as('admin.')->middleware(['auth', 'verified'])->group(fu
         Route::get('permissions/data', [PermissionController::class, 'getData'])->name('permissions.data');
         Route::resource('permissions', PermissionController::class);
 
-        Route::get('roles/access', [RoleController::class, 'manageAccessRole'])->name('roles.access');
-        Route::post('roles/access', [RoleController::class, 'assignAccessRole'])->name('roles.access.assign');
         Route::get('roles/data', [RoleController::class, 'getData'])->name('roles.data');
         Route::resource('roles', RoleController::class);
 
-        Route::post('users/bulk-action', [UserController::class, 'bulkaction'])->name('users.bulkaction');
-        Route::put('users/{user}/referral', [UserController::class, 'generateReferral'])->name('users.referral');
-        Route::put('users/{user}/verify', [UserController::class, 'verify'])->name('users.verify');
         Route::get('users/data', [UserController::class, 'getData'])->name('users.data');
         Route::resource('users', UserController::class);
 

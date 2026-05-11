@@ -1,2 +1,0 @@
-# starterkit
-Yatim Mandiri StarterKit

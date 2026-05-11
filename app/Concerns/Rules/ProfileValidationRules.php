@@ -7,9 +7,6 @@ use Illuminate\Validation\Rule;
 
 trait ProfileValidationRules
 {
-    /**
-     * Get the validation rules used to validate user profiles.
-     */
     protected function profileRules(?int $userId = null): array
     {
         return [
@@ -18,17 +15,11 @@ trait ProfileValidationRules
         ];
     }
 
-    /**
-     * Get the validation rules used to validate user names.
-     */
     protected function nameRules(): array
     {
         return ['required', 'string', 'max:255'];
     }
 
-    /**
-     * Get the validation rules used to validate user emails.
-     */
     protected function emailRules(?int $userId = null): array
     {
         return [

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Services\Views\DashboardView;
+use App\Services\Views\DashboardService;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
@@ -11,7 +11,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $config = DashboardView::handle(Auth::user());
+        $config = DashboardService::handle(Auth::user());
 
         return Inertia::render(
             $config['view'] ?? 'admin/dashboard/user',

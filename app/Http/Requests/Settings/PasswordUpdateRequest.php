@@ -9,9 +9,6 @@ class PasswordUpdateRequest extends FormRequest
 {
     use PasswordValidationRules;
 
-    /**
-     * Get the validation rules that apply to the request.
-     */
     public function rules(): array
     {
         return [

@@ -3,11 +3,30 @@ import { AppShell } from '@/components/app-shell';
 import { AppSidebar } from '@/components/app-sidebar';
 import { AppSidebarHeader } from '@/components/app-sidebar-header';
 import type { AppLayoutProps } from '@/types';
+import { usePage } from '@inertiajs/react';
+import { useEffect } from 'react';
+import { toast } from 'sonner';
 
 export default function AppSidebarLayout({
     children,
     breadcrumbs = [],
 }: AppLayoutProps) {
+    const {
+        flash: { success, error },
+    } = usePage<any>().props;
+
+    useEffect(() => {
+        if (success) {
+            toast.success(success);
+        }
+
+        if (error) {
+            toast.error(error);
+        }
+    }, [success, error]);
+
+    console.log(success, error);
+
     return (
         <AppShell variant="sidebar">
             <AppSidebar />
