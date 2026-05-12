@@ -35,9 +35,7 @@ class ProfileController extends Controller
 
         $request->user()->save();
 
-        // Inertia::flash('toast', ['type' => 'success', 'message' => __('Profile updated.')]);
-
-        return to_route('profile.edit')->with('success', 'Profile updated.');
+        return to_route('profile.edit')->with('success', 'Update Profile Successfully.');
     }
 
     /**
@@ -49,11 +47,11 @@ class ProfileController extends Controller
 
         Auth::logout();
 
-        $user->delete();
+        $user->delete($user->id);
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/')->with('success', 'Delete Your Account Successfully.');
     }
 }

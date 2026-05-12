@@ -1,10 +1,16 @@
 <?php
 
 use App\Http\Controllers\Admin\Core\PermissionController;
+use App\Http\Controllers\Admin\Core\Region\DistrictController;
+use App\Http\Controllers\Admin\Core\Region\ProvinceController;
+use App\Http\Controllers\Admin\Core\Region\RegencyController;
+use App\Http\Controllers\Admin\Core\Region\VillageController;
 use App\Http\Controllers\Admin\Core\RoleController;
 use App\Http\Controllers\Admin\Core\UserController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\Settings\LogActivityController;
 use App\Http\Controllers\Admin\Settings\SiteSettingsController;
+use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->as('admin.')->middleware(['auth', 'verified', 'auth.admin'])->group(function () {
@@ -15,6 +21,7 @@ Route::prefix('admin')->as('admin.')->middleware(['auth', 'verified', 'auth.admi
     Route::prefix('settings')->as('settings.')->group(function () {
         Route::get('site', [SiteSettingsController::class, 'edit'])->name('site.edit');
         Route::put('site', [SiteSettingsController::class, 'update'])->name('site.update');
+        Route::put('profile', [AuthController::class, 'updateProfile'])->name('profile.update');
     });
 
     Route::prefix('core')->as('core.')->group(function () {
@@ -27,18 +34,21 @@ Route::prefix('admin')->as('admin.')->middleware(['auth', 'verified', 'auth.admi
         Route::get('users/data', [UserController::class, 'getData'])->name('users.data');
         Route::resource('users', UserController::class);
 
-        // Route::prefix('regions')->as('regions.')->group(function () {
-        //     Route::get('provinces/data', [ProvinceController::class, 'getData'])->name('provinces.data');
-        //     Route::resource('provinces', ProvinceController::class);
+        Route::prefix('regions')->as('regions.')->group(function () {
+            Route::get('provinces/data', [ProvinceController::class, 'getData'])->name('provinces.data');
+            Route::resource('provinces', ProvinceController::class);
 
-        //     Route::get('regencies/data', [RegencyController::class, 'getData'])->name('regencies.data');
-        //     Route::resource('regencies', RegencyController::class);
+            Route::get('regencies/data', [RegencyController::class, 'getData'])->name('regencies.data');
+            Route::resource('regencies', RegencyController::class);
 
-        //     Route::get('districts/data', [DistrictController::class, 'getData'])->name('districts.data');
-        //     Route::resource('districts', DistrictController::class);
+            Route::get('districts/data', [DistrictController::class, 'getData'])->name('districts.data');
+            Route::resource('districts', DistrictController::class);
 
-        //     Route::get('villages/data', [VillageController::class, 'getData'])->name('villages.data');
-        //     Route::resource('villages', VillageController::class);
-        // });
+            Route::get('villages/data', [VillageController::class, 'getData'])->name('villages.data');
+            Route::resource('villages', VillageController::class);
+        });
+
+        Route::get('log-activities/data', [LogActivityController::class, 'getData'])->name('log-activity.data');
+        Route::get('log-activities', [LogActivityController::class, 'index'])->name('log-activity.index');
     });
 });

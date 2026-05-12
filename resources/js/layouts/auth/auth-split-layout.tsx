@@ -10,22 +10,20 @@ export default function AuthSplitLayout({
     title,
     description,
 }: AuthLayoutProps) {
-    const {
-        name,
-        flash: { success, error },
-    } = usePage<any>().props;
+    const { name, flash } = usePage<any>().props;
 
     useEffect(() => {
-        if (success) {
-            toast.success(success);
+        if (flash?.success) {
+            toast.success(flash.success);
         }
 
-        if (error) {
-            toast.error(error);
+        if (flash?.error) {
+            toast.error(flash.error);
         }
-    }, [success, error]);
+    }, [flash?.success, flash?.error]);
 
-    console.log(success, error);
+    // toast.success('Test');
+    // console.info(flash?.success, flash?.error);
 
     return (
         <div className="relative grid h-dvh flex-col items-center justify-center px-8 sm:px-0 lg:max-w-none lg:grid-cols-2 lg:px-0">

@@ -3,6 +3,10 @@
 namespace Database\Seeders;
 
 use App\Models\Core\Permission;
+use App\Models\Core\Region\District;
+use App\Models\Core\Region\Province;
+use App\Models\Core\Region\Regency;
+use App\Models\Core\Region\Village;
 use App\Models\Core\Role;
 use App\Models\Core\User;
 use Illuminate\Database\Seeder;
@@ -62,6 +66,8 @@ class UserRolePermissionSeeder extends Seeder
             ['name' => 'update-village', 'guard_name' => 'web'],
             ['name' => 'delete-village', 'guard_name' => 'web'],
             ['name' => 'data-village', 'guard_name' => 'web'],
+            ['name' => 'view-log-activity', 'guard_name' => 'web'],
+            ['name' => 'data-log-activity', 'guard_name' => 'web'],
         ])->each(fn($permission) => Permission::create($permission)->assignRole('Administrators'));
 
         User::create([
@@ -70,5 +76,25 @@ class UserRolePermissionSeeder extends Seeder
             'email_verified_at' => now(),
             'password' => Hash::make(uniqid()),
         ])->assignRole('Administrators');
+
+        Province::query()->update([
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        Regency::query()->update([
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        District::query()->update([
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        Village::query()->update([
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Settings\ProfileUpdateRequest;
 use App\Models\Core\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -93,6 +94,19 @@ class AuthController extends Controller
         // implement Laravel Password::reset() kalau sudah email config
 
         return redirect('/login')->with('success', 'Password berhasil direset.');
+    }
+
+    public function updateProfile(ProfileUpdateRequest $request)
+    {
+        $request->user()->fill($request->validated());
+
+        if ($request->user()->isDirty('email')) {
+            $request->user()->email_verified_at = null;
+        }
+
+        $request->user()->save();
+
+        return to_route('profile.edit')->with('success', 'Update Profile Successfully.');
     }
 
     public function logout(Request $request)

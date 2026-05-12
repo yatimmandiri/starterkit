@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use App\Settings\SiteSettings;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
+use Diglactic\Breadcrumbs\Breadcrumbs;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -72,6 +73,12 @@ class HandleInertiaRequests extends Middleware
                 ],
                 'maintenance_mode' => $settings->maintenance_mode,
             ],
+            'breadcrumbs' => $request->isMethod('get') && $request->route()
+                ? Breadcrumbs::generate(
+                    $request->route()->getName(),
+                    ...array_values($request->route()->parameters())
+                )
+                : [],
             'sidebarOpen' => ! $request->hasCookie('sidebar_state') || $request->cookie('sidebar_state') === 'true',
         ];
     }

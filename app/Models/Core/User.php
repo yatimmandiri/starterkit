@@ -5,6 +5,7 @@ namespace App\Models\Core;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -52,5 +53,13 @@ class User extends Authenticatable implements MustVerifyEmail
             ->logFillable()
             ->logOnlyDirty()
             ->useLogName('System');
+    }
+
+    public function scopeSearch(Builder $query, ?string $search)
+    {
+        return $query->when($search, function ($q, $search) {
+            $q->where('name', 'like', "%{$search}%")
+                ->orWhere('email', 'like', "%{$search}%");
+        });
     }
 }
