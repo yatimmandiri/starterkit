@@ -4,7 +4,7 @@ import {
     renderRowDate,
     renderRowHeader,
 } from '@/components/partials/dataTables/utils/dataTable-utils';
-import logActivity from '@/routes/admin/core/log-activity';
+import activities from '@/routes/admin/logs/activities';
 import moment from 'moment-timezone';
 import { useState } from 'react';
 
@@ -18,8 +18,9 @@ export default function ListPage() {
             accessorKey: 'log_name',
         },
         {
+            id: 'users',
             header: (info: any) => renderRowHeader(info, 'User'),
-            accessorKey: 'users.name',
+            accessorFn: (row: any) => row.users?.name ?? '-',
         },
         {
             header: (info: any) => renderRowHeader(info, 'Subject Type'),
@@ -80,7 +81,7 @@ export default function ListPage() {
                     filterValue={filterValue}
                     refreshData={refreshData}
                     setRefreshData={setRefreshData}
-                    urlFetchData={logActivity.data().url}
+                    urlFetchData={activities.data().url}
                     formatDataExport={formatDataExport}
                     withActions={false}
                 >

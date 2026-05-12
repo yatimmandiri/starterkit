@@ -1,4 +1,3 @@
-import logActivity from '@/routes/admin/core/log-activity';
 import permissions from '@/routes/admin/core/permissions';
 import districts from '@/routes/admin/core/regions/districts';
 import provinces from '@/routes/admin/core/regions/provinces';
@@ -6,6 +5,7 @@ import regencies from '@/routes/admin/core/regions/regencies';
 import villages from '@/routes/admin/core/regions/villages';
 import roles from '@/routes/admin/core/roles';
 import users from '@/routes/admin/core/users';
+import activities from '@/routes/admin/logs/activities';
 import site from '@/routes/admin/settings/site';
 import { ChevronRight, CogIcon, CpuIcon, MapIcon } from 'lucide-react';
 
@@ -83,7 +83,7 @@ export const NavigationList = [
                     },
                     {
                         title: 'Log Activity',
-                        href: logActivity.index().url,
+                        href: activities.index().url,
                         permission: 'view-log-activity',
                         icon: ChevronRight,
                     },
