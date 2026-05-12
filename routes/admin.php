@@ -24,6 +24,11 @@ Route::prefix('admin')->as('admin.')->middleware(['auth', 'verified', 'auth.admi
         Route::put('profile', [AuthController::class, 'updateProfile'])->name('profile.update');
     });
 
+    Route::prefix('logs')->as('logs.')->group(function () {
+        Route::get('activities/data', [LogActivityController::class, 'getData'])->name('activities.data');
+        Route::get('activities', [LogActivityController::class, 'index'])->name('activities.index');
+    });
+
     Route::prefix('core')->as('core.')->group(function () {
         Route::get('permissions/data', [PermissionController::class, 'getData'])->name('permissions.data');
         Route::resource('permissions', PermissionController::class);
@@ -47,8 +52,5 @@ Route::prefix('admin')->as('admin.')->middleware(['auth', 'verified', 'auth.admi
             Route::get('villages/data', [VillageController::class, 'getData'])->name('villages.data');
             Route::resource('villages', VillageController::class);
         });
-
-        Route::get('log-activities/data', [LogActivityController::class, 'getData'])->name('log-activity.data');
-        Route::get('log-activities', [LogActivityController::class, 'index'])->name('log-activity.index');
     });
 });

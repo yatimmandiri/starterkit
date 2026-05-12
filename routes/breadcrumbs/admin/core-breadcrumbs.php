@@ -227,14 +227,12 @@ Breadcrumbs::for(
 );
 
 // Log Activity
-Breadcrumbs::for(
-    'admin.core.log-activity.index',
-    fn($trail) =>
-    $trail->parent('admin.dashboard')->push('Roles', route('admin.core.log-activity.index'))
-);
+Breadcrumbs::for('admin.logs.activites.index', function (BreadcrumbTrail $trail) {
+    $trail->push('Logs Activities', route('admin.logs.activites.index'));
+});
 
 Breadcrumbs::for(
-    'admin.core.log-activity.data',
+    'admin.logs.activites.data',
     fn($trail) =>
-    $trail->parent('admin.core.log-activity.index')->push('Roles Data', route('admin.core.log-activity.data'))
+    $trail->parent('admin.logs.activites.index')->push('Logs Activities Data', route('admin.logs.activites.data'))
 );
