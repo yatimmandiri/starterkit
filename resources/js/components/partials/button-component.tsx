@@ -84,11 +84,17 @@ export const ButtonIconComponent = ({
     icons = 'Button',
     className = '',
     iconsClass = 'w-5 h-5',
+    variant = 'solid',
+    color = 'default',
     pill = false,
     ...props
 }: ButtonProps) => {
     return (
-        <Button type={buttonType} className={cn(className)} {...props}>
+        <Button
+            type={buttonType}
+            className={cn(className, variants[variant][color])}
+            {...props}
+        >
             {icons && createElement(icons, { className: cn(iconsClass) })}
         </Button>
     );

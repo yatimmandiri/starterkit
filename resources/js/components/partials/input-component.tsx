@@ -159,18 +159,6 @@ export const InputFileComponent = ({
     );
 };
 
-export const InputDateComponent = () => {
-    return <div>InputDateComponent</div>;
-};
-
 export const InputNumberComponent = () => {
     return <div>InputNumberComponent</div>;
-};
-
-export const InputCheckboxComponent = () => {
-    return <div>InputCheckboxComponent</div>;
-};
-
-export const InputRadioComponent = () => {
-    return <div>InputRadioComponent</div>;
 };
