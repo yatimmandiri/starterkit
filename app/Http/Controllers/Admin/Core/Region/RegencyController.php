@@ -164,7 +164,7 @@ class RegencyController extends Controller
 
     public function getData(Request $request)
     {
-        $this->authorize('data-regency', new Regency());
+        $this->authorize('data-regency', Regency::class);
 
         $perPage = $request->input('perPage', null);
         $page = $request->input('page', null);

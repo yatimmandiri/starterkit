@@ -150,7 +150,7 @@ class PermissionController extends Controller
 
     public function getData(Request $request)
     {
-        $this->authorize('data-permission', new Permission());
+        $this->authorize('data-permission', Permission::class);
 
         $perPage = $request->input('perPage', null);
         $page = $request->input('page', 1);

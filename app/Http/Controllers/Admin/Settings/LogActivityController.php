@@ -11,6 +11,8 @@ class LogActivityController extends Controller
 {
     public function index()
     {
+        $this->authorize('viewAny', LogActivity::class);
+
         $data = [];
 
         return Inertia::render('admin/core/log-activity/list', $data);
@@ -18,7 +20,7 @@ class LogActivityController extends Controller
 
     public function getData(Request $request)
     {
-        // $this->authorize('data-log-activity', new Permission());
+        $this->authorize('data-log-activity', LogActivity::class);
 
         $perPage = $request->input('perPage', null);
         $page = $request->input('page', 1);

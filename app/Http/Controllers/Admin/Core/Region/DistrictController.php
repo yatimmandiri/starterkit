@@ -164,7 +164,7 @@ class DistrictController extends Controller
 
     public function getData(Request $request)
     {
-        $this->authorize('data-district', new District());
+        $this->authorize('data-district', District::class);
 
         $perPage = $request->input('perPage', null);
         $page = $request->input('page', null);

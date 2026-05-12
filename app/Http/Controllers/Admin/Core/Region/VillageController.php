@@ -55,7 +55,9 @@ class VillageController extends Controller
         $this->authorize('create', Village::class);
 
         $data = [
-            'id' => Village::where('district_id', $request->district_id)->max('id') + 1,
+            'id' => Village::query()
+                ->where('district_id', $request->district_id)
+                ->max('id') + 1,
             'name' => $request->name,
             'district_id' => $request->district_id,
         ];
@@ -164,7 +166,7 @@ class VillageController extends Controller
 
     public function getData(Request $request)
     {
-        $this->authorize('data-village', new Village());
+        $this->authorize('data-village', Village::class);
 
         $perPage = $request->input('perPage', null);
         $page = $request->input('page', null);
