@@ -4,13 +4,17 @@ import {
     renderRowDate,
     renderRowHeader,
 } from '@/components/partials/dataTables/utils/dataTable-utils';
+import { DatePickerComponent } from '@/components/partials/datePicker-component';
 import activities from '@/routes/admin/logs/activities';
+import { formatDate } from '@/utils/formatDate';
 import moment from 'moment-timezone';
 import { useState } from 'react';
 
 export default function ListPage() {
     const [refreshData, setRefreshData] = useState(false);
-    const [filterValue, setFilterValue] = useState({});
+    const [filterValue, setFilterValue] = useState({
+        filterDate: formatDate(moment(), 'custom'),
+    });
 
     const columns = [
         {
@@ -85,6 +89,20 @@ export default function ListPage() {
                     formatDataExport={formatDataExport}
                     withActions={false}
                 >
+                    <div className="flex flex-col space-y-4 px-4 pt-8 md:px-8">
+                        <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
+                            <DatePickerComponent
+                                label="Date"
+                                value={filterValue.filterDate}
+                                handleOnChange={(value: any) =>
+                                    setFilterValue({
+                                        ...filterValue,
+                                        filterDate: formatDate(value, 'custom'),
+                                    })
+                                }
+                            />
+                        </div>
+                    </div>
                     <DataTableComponent buttonActive={{ export: false }} />
                 </DataTableProvider>
             </div>

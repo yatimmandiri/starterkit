@@ -27,9 +27,15 @@ class LogActivityController extends Controller
         $globalSearch = $request->input('globalSearch', '');
         $orderDirection = $request->input('orderDirection', 'desc');
         $orderBy = $request->input('orderBy', 'id');
+        $filterValue = $request->input('filterValue', []);
 
         $query = LogActivity::query()
             ->with(['users'])
+            ->when(
+                data_get($filterValue, 'filterDate'),
+                fn($query, $value) =>
+                $query->whereDate('created_at', $value)
+            )
             ->latest()
             ->search($globalSearch)
             ->orderBy($orderBy, $orderDirection);

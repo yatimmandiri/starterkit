@@ -12,6 +12,7 @@ export const formatDate = (
         | 'short'
         | 'iso'
         | 'relative'
+        | 'custom'
         | string = 'date',
 ) => {
     if (!value) return '-';
@@ -46,6 +47,9 @@ export const formatDate = (
         // 2 hours ago
         case 'relative':
             return m.fromNow();
+
+        case 'custom':
+            return m.format('YYYY-MM-DD');
 
         default:
             return m.format(format);
