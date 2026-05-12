@@ -158,7 +158,3 @@ export const InputFileComponent = ({
         </Field>
     );
 };
-
-export const InputNumberComponent = () => {
-    return <div>InputNumberComponent</div>;
-};
