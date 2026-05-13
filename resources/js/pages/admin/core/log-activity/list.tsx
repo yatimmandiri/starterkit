@@ -68,12 +68,8 @@ export default function ListPage() {
         return data.map((item: any, i: number) => ({
             No: i + 1,
             Name: item.name,
-            'Created At': moment(item.created_at)
-                .tz('Asia/Jakarta')
-                .format('YYYY-MM-DD HH:mm:ss'),
-            'Updated At': moment(item.updated_at)
-                .tz('Asia/Jakarta')
-                .format('YYYY-MM-DD HH:mm:ss'),
+            'Created At': formatDate(item.created_at, 'datetime'),
+            'Updated At': formatDate(item.updated_at, 'datetime'),
         }));
     };
 

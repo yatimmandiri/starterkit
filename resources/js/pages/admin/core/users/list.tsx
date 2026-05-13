@@ -7,9 +7,9 @@ import {
 import { SelectComponent } from '@/components/partials/select-component';
 import { Badge } from '@/components/ui/badge';
 import users from '@/routes/admin/core/users';
+import { formatDate } from '@/utils/formatDate';
 import { router, usePage } from '@inertiajs/react';
 import { BadgeCheckIcon, BadgeXIcon, ListChecks } from 'lucide-react';
-import moment from 'moment-timezone';
 import { useState } from 'react';
 import { toast } from 'sonner';
 
@@ -93,12 +93,8 @@ export default function ListPage() {
         return data.map((item: any, i: number) => ({
             No: i + 1,
             Name: item.name,
-            'Created At': moment(item.created_at)
-                .tz('Asia/Jakarta')
-                .format('YYYY-MM-DD HH:mm:ss'),
-            'Updated At': moment(item.updated_at)
-                .tz('Asia/Jakarta')
-                .format('YYYY-MM-DD HH:mm:ss'),
+            'Created At': formatDate(item.created_at, 'datetime'),
+            'Updated At': formatDate(item.updated_at, 'datetime'),
         }));
     };
 

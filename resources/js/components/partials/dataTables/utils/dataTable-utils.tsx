@@ -15,6 +15,7 @@ import {
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { useCurrentUrl } from '@/hooks/use-current-url';
+import { formatDate } from '@/utils/formatDate';
 import { router } from '@inertiajs/react';
 import {
     ChevronDownIcon,
@@ -23,7 +24,6 @@ import {
     FileTextIcon,
     MoreHorizontal,
 } from 'lucide-react';
-import moment from 'moment-timezone';
 import { useState } from 'react';
 import { Fragment } from 'react/jsx-runtime';
 
@@ -58,7 +58,7 @@ export const renderRowHeader = (info: any, title: string) => {
 export const renderRowDate = (value: any) => {
     if (!value) return '-';
 
-    return moment(value).locale('id').format('DD MMMM YYYY');
+    return formatDate(value, 'date');
 };
 
 export const renderRowNumber = (value: number) => {
