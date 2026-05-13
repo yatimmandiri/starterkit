@@ -30,6 +30,8 @@ interface DataTableProps {
     withActions?: boolean;
     formatDataExport: any;
     customButtons?: any;
+    rowSelection?: any;
+    setRowSelection?: any;
     children: ReactNode;
 }
 
@@ -52,6 +54,8 @@ export const DataTableProvider = ({
     withActions = true,
     formatDataExport,
     customButtons,
+    rowSelection,
+    setRowSelection,
     children,
 }: DataTableProps) => {
     const [isLoading, setIsLoading] = useState(false);
@@ -132,14 +136,6 @@ export const DataTableProvider = ({
     useEffect(() => {
         fetchData();
     }, [fetchData]);
-
-    useEffect(() => {
-        if (refreshData) {
-            fetchData().finally(() => {
-                setRefreshData(false); // reset setelah selesai fetch
-            });
-        }
-    }, [refreshData]);
 
     const initialColumns = useMemo(() => {
         const baseStartColumns = [
@@ -295,6 +291,19 @@ export const DataTableProvider = ({
         () => table.getSelectedRowModel().rows.map((row: any) => row.original),
         [table.getSelectedRowModel()], // dependency
     );
+
+    useEffect(() => {
+        if (refreshData) {
+            fetchData().finally(() => {
+                setRefreshData(false); // reset setelah selesai fetch
+                table.resetRowSelection();
+            });
+        }
+    }, [refreshData]);
+
+    useEffect(() => {
+        setRowSelection?.(selectedRows);
+    }, [selectedRows]);
 
     const contextValue = {
         data,

@@ -213,9 +213,9 @@ class UserController extends Controller
         return redirect()->route('admin.core.users.index')->with('success', 'Referral code generated successfully');
     }
 
-    public function bulkaction(Request $request)
+    public function bulkAction(Request $request)
     {
-        $this->authorize('bulk', User::class);
+        $this->authorize('bulk-user', User::class);
 
         $ids = $request->input('ids', []);
 

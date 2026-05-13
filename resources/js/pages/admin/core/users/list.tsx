@@ -8,15 +8,17 @@ import { SelectComponent } from '@/components/partials/select-component';
 import { Badge } from '@/components/ui/badge';
 import users from '@/routes/admin/core/users';
 import { router, usePage } from '@inertiajs/react';
-import { BadgeCheckIcon, BadgeXIcon } from 'lucide-react';
+import { BadgeCheckIcon, BadgeXIcon, ListChecks } from 'lucide-react';
 import moment from 'moment-timezone';
 import { useState } from 'react';
+import { toast } from 'sonner';
 
 export default function ListPage() {
     const { roles } = usePage<any>().props;
 
     const [refreshData, setRefreshData] = useState(false);
     const [filterValue, setFilterValue] = useState<any>({});
+    const [rowSelection, setRowSelection] = useState([]);
 
     const columns = [
         {
@@ -100,6 +102,67 @@ export default function ListPage() {
         }));
     };
 
+    const customButtons = [
+        {
+            key: 'bulk',
+            label: 'Bulk',
+            icon: ListChecks,
+            children: [
+                {
+                    key: 'verify',
+                    label: 'Verify Selected Data',
+                    onClick: () => {
+                        if (rowSelection.length === 0) {
+                            toast.error('Tidak ada data yang dipilih');
+                            return;
+                        }
+
+                        router.post(
+                            users.bulkAction().url,
+                            {
+                                ids: rowSelection.map((item: any) => item.id),
+                                action: 'verify',
+                            },
+                            {
+                                preserveScroll: true,
+                                onSuccess: () => {
+                                    setRefreshData(true);
+                                    router.reload({ only: ['flash'] });
+                                },
+                            },
+                        );
+                    },
+                },
+                {
+                    key: 'delete',
+                    label: 'Delete Selected Data',
+                    onClick: () => {
+                        if (rowSelection.length === 0) {
+                            toast.error('Tidak ada data yang dipilih');
+                            return;
+                        }
+
+                        router.post(
+                            users.bulkAction().url,
+                            {
+                                ids: rowSelection.map((item: any) => item.id),
+                                action: 'delete',
+                            },
+                            {
+                                preserveScroll: true,
+                                onSuccess: () => {
+                                    setRefreshData(true);
+                                    router.reload({ only: ['flash'] });
+                                },
+                            },
+                        );
+                    },
+                },
+            ],
+            enabled: true,
+        },
+    ];
+
     return (
         <div className="flex h-full flex-1 flex-col gap-4 overflow-x-auto rounded-xl p-4">
             <div className="relative min-h-screen flex-1 overflow-hidden rounded-xl border border-sidebar-border/70 md:min-h-min dark:border-sidebar-border">
@@ -110,6 +173,8 @@ export default function ListPage() {
                     setRefreshData={setRefreshData}
                     urlFetchData={users.data().url}
                     formatDataExport={formatDataExport}
+                    setRowSelection={setRowSelection}
+                    customButtons={customButtons}
                 >
                     <div className="flex flex-col space-y-4 px-4 pt-8 md:px-8">
                         <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
