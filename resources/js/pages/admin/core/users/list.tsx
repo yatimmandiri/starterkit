@@ -5,8 +5,10 @@ import {
     renderRowHeader,
 } from '@/components/partials/dataTables/utils/dataTable-utils';
 import { SelectComponent } from '@/components/partials/select-component';
+import { Badge } from '@/components/ui/badge';
 import users from '@/routes/admin/core/users';
-import { usePage } from '@inertiajs/react';
+import { router, usePage } from '@inertiajs/react';
+import { BadgeCheckIcon, BadgeXIcon } from 'lucide-react';
 import moment from 'moment-timezone';
 import { useState } from 'react';
 
@@ -32,6 +34,11 @@ export default function ListPage() {
                 row.roles.map((item: any) => item.name).join(', '),
         },
         {
+            header: (info: any) => renderRowHeader(info, 'Verified'),
+            accessorKey: 'email_verified_at',
+            cell: (info: any) => renderRowVerify(info),
+        },
+        {
             header: (info: any) => renderRowHeader(info, 'Created At'),
             accessorKey: 'created_at',
             cell: (info: any) => renderRowDate(info.getValue()),
@@ -42,6 +49,43 @@ export default function ListPage() {
             cell: (info: any) => renderRowDate(info.getValue()),
         },
     ];
+
+    const renderRowVerify = (info: any) => {
+        const handleVerify = (id: number) => {
+            router.put(
+                users.verify(id).url,
+                {},
+                {
+                    preserveScroll: true,
+                    onSuccess: () => {
+                        setRefreshData(true);
+                        router.reload({ only: ['flash'] });
+                    },
+                },
+            );
+        };
+
+        return info.getValue() ? (
+            <Badge
+                className="bg-blue-500 text-white dark:bg-blue-600"
+                variant="default"
+                color="success"
+            >
+                <BadgeCheckIcon />
+                Verified
+            </Badge>
+        ) : (
+            <Badge
+                className="cursor-pointer"
+                onClick={() => handleVerify(info.row.original.id)}
+                variant="destructive"
+                color="danger"
+            >
+                <BadgeXIcon />
+                Not Verified
+            </Badge>
+        );
+    };
 
     const formatDataExport = (data: any) => {
         return data.map((item: any, i: number) => ({

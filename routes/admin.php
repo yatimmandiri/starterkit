@@ -36,6 +36,7 @@ Route::prefix('admin')->as('admin.')->middleware(['auth', 'verified', 'auth.admi
         Route::get('roles/data', [RoleController::class, 'getData'])->name('roles.data');
         Route::resource('roles', RoleController::class);
 
+        Route::put('users/{user}/verify', [UserController::class, 'verify'])->name('users.verify');
         Route::get('users/data', [UserController::class, 'getData'])->name('users.data');
         Route::resource('users', UserController::class);
 
