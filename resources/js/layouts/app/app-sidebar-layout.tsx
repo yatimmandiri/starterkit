@@ -23,9 +23,6 @@ export default function AppSidebarLayout({
         }
     }, [flash?.success, flash?.error]);
 
-    // toast.success('Test');
-    // console.info(flash?.success, flash?.error);
-
     return (
         <AppShell variant="sidebar">
             <AppSidebar />
