@@ -8,11 +8,6 @@ use Spatie\Activitylog\Support\LogOptions;
 
 class LogActivity extends Activity
 {
-    public function users()
-    {
-        return $this->belongsTo(User::class, 'causer_id');
-    }
-
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()

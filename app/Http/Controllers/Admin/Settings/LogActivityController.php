@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Settings;
 
 use App\Http\Controllers\Controller;
 use App\Models\Core\LogActivity;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -30,13 +31,17 @@ class LogActivityController extends Controller
         $filterValue = $request->input('filterValue', []);
 
         $query = LogActivity::query()
-            ->with(['users'])
+            ->with(['causer'])
             ->when(
                 data_get($filterValue, 'filterDate'),
-                fn($query, $value) =>
-                $query->whereDate('created_at', $value)
+                function ($query, $value) {
+
+                    $query->whereDate(
+                        'created_at',
+                        Carbon::parse($value)->format('Y-m-d')
+                    );
+                }
             )
-            ->latest()
             ->search($globalSearch)
             ->orderBy($orderBy, $orderDirection);
 

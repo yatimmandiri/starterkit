@@ -1,11 +1,15 @@
 <?php
 
+use App\Http\Controllers\Admin\Settings\SiteSettingsController;
 use App\Http\Controllers\Settings\ProfileController;
 use App\Http\Controllers\Settings\SecurityController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])->as('admin.')->group(function () {
     Route::redirect('settings', '/settings/profile');
+
+    Route::post('upload-image', [SiteSettingsController::class, 'editorUploadFile'])->name('uploadfiles');
+    Route::post('delete-image', [SiteSettingsController::class, 'editorDeleteFile'])->name('deletefiles');
 
     Route::get('settings/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('settings/profile', [ProfileController::class, 'update'])->name('profile.update');

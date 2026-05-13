@@ -241,9 +241,6 @@ export const SiteForm = () => {
                                 handleOnChange={handleFavichandleOnChange}
                                 errors={errors.favicon}
                             />
-                            {/*
-
-                             */}
                         </div>
                     </CardContent>
                 </Card>

@@ -13,7 +13,7 @@ import { useState } from 'react';
 export default function ListPage() {
     const [refreshData, setRefreshData] = useState(false);
     const [filterValue, setFilterValue] = useState({
-        filterDate: formatDate(moment(), 'custom'),
+        filterDate: formatDate(moment().tz('Asia/Jakarta'), 'custom'),
     });
 
     const columns = [
@@ -22,9 +22,9 @@ export default function ListPage() {
             accessorKey: 'log_name',
         },
         {
-            id: 'users',
+            id: 'causer',
             header: (info: any) => renderRowHeader(info, 'User'),
-            accessorFn: (row: any) => row.users?.name ?? '-',
+            accessorFn: (row: any) => row.causer?.name ?? '-',
         },
         {
             header: (info: any) => renderRowHeader(info, 'Subject Type'),
