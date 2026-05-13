@@ -58,7 +58,7 @@ export const renderRowHeader = (info: any, title: string) => {
 export const renderRowDate = (value: any) => {
     if (!value) return '-';
 
-    return formatDate(value, 'date');
+    return formatDate(value);
 };
 
 export const renderRowNumber = (value: number) => {

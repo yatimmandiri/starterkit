@@ -20,7 +20,7 @@ const variants: any = {
     danger: 'border-red-300 focus:border-red-500 focus:ring-red-500 focus-visible:ring-red-500 focus-visible:shadow-red-500/30',
 };
 
-interface InputComponentProps {
+interface InputTextComponentProps {
     type?: string;
     placeholder?: string;
     label?: string;
@@ -52,7 +52,7 @@ export const InputTextComponent = ({
     handleRightAddon = () => {},
     handleOnChange = () => {},
     ...props
-}: InputComponentProps) => {
+}: InputTextComponentProps) => {
     return (
         <Field data-invalid={errors}>
             {label && <FieldLabel htmlFor={label}>{label}</FieldLabel>}
@@ -125,7 +125,7 @@ export const InputFileComponent = ({
     handleRightAddon = () => {},
     handleOnChange = () => {},
     ...props
-}: InputComponentProps) => {
+}: InputTextComponentProps) => {
     return (
         <Field>
             {label && <FieldLabel htmlFor={label}>{label}</FieldLabel>}

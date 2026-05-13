@@ -2,7 +2,6 @@ import { Card } from '@/components/ui/card';
 import { formatDate } from '@/utils/formatDate';
 import { usePage } from '@inertiajs/react';
 import { InfoIcon } from 'lucide-react';
-import moment from 'moment-timezone';
 
 export default function DetailPage() {
     const { district } = usePage<any>().props;

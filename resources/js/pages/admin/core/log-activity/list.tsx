@@ -7,13 +7,12 @@ import {
 import { DatePickerComponent } from '@/components/partials/datePicker-component';
 import activities from '@/routes/admin/logs/activities';
 import { formatDate } from '@/utils/formatDate';
-import moment from 'moment-timezone';
 import { useState } from 'react';
 
 export default function ListPage() {
     const [refreshData, setRefreshData] = useState(false);
     const [filterValue, setFilterValue] = useState({
-        filterDate: formatDate(moment().tz('Asia/Jakarta'), 'custom'),
+        filterDate: formatDate(new Date(), 'custom'),
     });
 
     const columns = [

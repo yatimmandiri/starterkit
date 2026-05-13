@@ -1,3 +1,4 @@
+import { cn } from '@/lib/utils';
 import axios from 'axios';
 import { Check, ChevronsUpDown, InfoIcon } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useState } from 'react';
@@ -13,6 +14,17 @@ import {
 import { Field, FieldDescription, FieldLabel } from '../ui/field';
 import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
 
+const variants: any = {
+    default:
+        'border-zinc-300 focus:border-blue-500 focus:ring-blue-500 focus-visible:ring-blue-500 focus-visible:shadow-blue-500/30',
+    info: 'border-sky-300 focus:border-sky-500 focus:ring-sky-500 focus-visible:ring-sky-500 focus-visible:shadow-sky-500/30',
+    success:
+        'border-emerald-300 focus:border-emerald-500 focus:ring-emerald-500 focus-visible:ring-emerald-500 focus-visible:shadow-emerald-500/30',
+    warning:
+        'border-amber-300 focus:border-amber-500 focus:ring-amber-500 focus-visible:ring-amber-500 focus-visible:shadow-amber-500/30',
+    danger: 'border-red-300 focus:border-red-500 focus:ring-red-500 focus-visible:ring-red-500 focus-visible:shadow-red-500/30',
+};
+
 interface SelectComponentProps {
     placeholder?: string;
     data?: any;
@@ -23,6 +35,7 @@ interface SelectComponentProps {
     multiple?: boolean;
     handleOnChange?: any;
     fetchDataUrl?: string;
+    color?: 'default' | 'info' | 'success' | 'warning' | 'danger';
     [key: string]: any;
 }
 
@@ -36,6 +49,7 @@ export const SelectComponent = ({
     multiple,
     handleOnChange,
     fetchDataUrl,
+    color = 'default',
     ...props
 }: SelectComponentProps) => {
     const [isLoading, setIsLoading] = useState(false);
@@ -149,7 +163,10 @@ export const SelectComponent = ({
                     <Button
                         variant="outline"
                         role="combobox"
-                        className="relative w-full justify-between text-gray-500"
+                        className={cn(
+                            'relative w-full justify-between',
+                            variants[color],
+                        )}
                     >
                         <span
                             className={

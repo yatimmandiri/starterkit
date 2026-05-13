@@ -25,6 +25,7 @@ interface Props {
     group?: boolean;
     color?: keyof typeof variants;
     handleOnChange?: (val: any) => void;
+    [key: string]: any;
 }
 
 export const DatePickerComponent = ({
