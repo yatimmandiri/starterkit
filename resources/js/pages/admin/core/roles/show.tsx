@@ -1,8 +1,8 @@
 import { CheckboxComponent } from '@/components/partials/checkbox-component';
 import { Card } from '@/components/ui/card';
+import { formatDate } from '@/utils/formatDate';
 import { usePage } from '@inertiajs/react';
 import { InfoIcon } from 'lucide-react';
-import moment from 'moment-timezone';
 
 export default function DetailPage() {
     const { role } = usePage<any>().props;
@@ -49,9 +49,7 @@ export default function DetailPage() {
                                 Created At
                             </span>
                             <span className="text-sm">
-                                {moment(role.created_at)
-                                    .tz('Asia/Jakarta')
-                                    .format('DD MMMM YYYY')}
+                                {formatDate(role.created_at)}
                             </span>
                         </li>
                         <li className="flex flex-col space-y-2">
@@ -59,9 +57,7 @@ export default function DetailPage() {
                                 Updated At
                             </span>
                             <span className="text-sm">
-                                {moment(role.updated_at)
-                                    .tz('Asia/Jakarta')
-                                    .format('DD MMMM YYYY')}
+                                {formatDate(role.updated_at)}
                             </span>
                         </li>
                     </ul>

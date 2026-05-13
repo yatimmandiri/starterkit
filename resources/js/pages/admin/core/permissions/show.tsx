@@ -1,7 +1,7 @@
 import { Card } from '@/components/ui/card';
+import { formatDate } from '@/utils/formatDate';
 import { usePage } from '@inertiajs/react';
 import { InfoIcon } from 'lucide-react';
-import moment from 'moment-timezone';
 
 export default function DetailPage() {
     const { permission } = usePage<any>().props;
@@ -26,9 +26,7 @@ export default function DetailPage() {
                                 Created At
                             </span>
                             <span className="text-sm">
-                                {moment(permission.created_at)
-                                    .tz('Asia/Jakarta')
-                                    .format('DD MMMM YYYY')}
+                                {formatDate(permission.created_at)}
                             </span>
                         </li>
                         <li className="flex flex-col space-y-2">
@@ -36,9 +34,7 @@ export default function DetailPage() {
                                 Updated At
                             </span>
                             <span className="text-sm">
-                                {moment(permission.updated_at)
-                                    .tz('Asia/Jakarta')
-                                    .format('DD MMMM YYYY')}
+                                {formatDate(permission.updated_at)}
                             </span>
                         </li>
                     </ul>
