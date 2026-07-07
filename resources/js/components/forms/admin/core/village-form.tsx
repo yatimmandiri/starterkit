@@ -1,13 +1,14 @@
 import { ButtonComponent } from '@/components/partials/button-component';
 import { InputTextComponent } from '@/components/partials/input-component';
 import { SelectComponent } from '@/components/partials/select-component';
+import districts from '@/routes/admin/core/regions/districts';
 import villages from '@/routes/admin/core/regions/villages';
 import { Fieldset } from '@headlessui/react';
 import { useForm, usePage } from '@inertiajs/react';
 import { SaveIcon } from 'lucide-react';
 
 export const VillageForm = ({ dataId }: { dataId?: string }) => {
-    const { village, districts } = usePage<any>().props;
+    const { village } = usePage<any>().props;
 
     const { data, setData, post, put, processing, errors, transform } = useForm(
         {
@@ -54,10 +55,9 @@ export const VillageForm = ({ dataId }: { dataId?: string }) => {
                 <SelectComponent
                     label="District"
                     placeholder="Select District..."
-                    data={districts?.map((item: any) => {
-                        return { label: item.name, value: item.id };
-                    })}
+                    fetchDataUrl={districts.data().url}
                     dataSelected={data?.district_id}
+                    selectedLabel={village?.district?.name}
                     handleOnChange={(value: string) =>
                         setData('district_id', value)
                     }

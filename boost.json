@@ -12,10 +12,6 @@
         "laravel-best-practices",
         "socialite-development",
         "wayfinder-development",
-        "pest-testing",
-        "inertia-react-development",
-        "tailwindcss-development",
-        "echo-react-development",
-        "echo-development"
+        "pest-testing"
     ]
 }

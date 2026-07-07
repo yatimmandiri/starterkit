@@ -29,6 +29,7 @@ interface SelectComponentProps {
     placeholder?: string;
     data?: any;
     dataSelected?: any;
+    selectedLabel?: string;
     label?: string;
     errors?: any;
     helperText?: any;
@@ -100,17 +101,17 @@ export const SelectComponent = ({
                 )
                 .map((item: any) => item.label);
 
-            return selectedLabels.length > 0
+            return selectedLabels.length
                 ? selectedLabels.join(', ')
                 : placeholder;
-        } else {
-            const selectedLabel = resultData.find(
-                (item: any) => item.value === dataSelected,
-            )?.label;
-
-            return selectedLabel || placeholder;
         }
-    }, [dataSelected, resultData, multiple, placeholder]);
+
+        const selectedLabel =
+            resultData.find((item: any) => item.value === dataSelected)
+                ?.label ?? props.selectedLabel;
+
+        return selectedLabel || placeholder;
+    }, [dataSelected, resultData, multiple, placeholder, props.selectedLabel]);
 
     // ✅ fetch data (API mode)
     const fetchData = useCallback(async () => {

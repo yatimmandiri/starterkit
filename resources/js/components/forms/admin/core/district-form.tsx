@@ -2,6 +2,7 @@ import { ButtonComponent } from '@/components/partials/button-component';
 import { InputTextComponent } from '@/components/partials/input-component';
 import { SelectComponent } from '@/components/partials/select-component';
 import districts from '@/routes/admin/core/regions/districts';
+import regencies from '@/routes/admin/core/regions/regencies';
 import { Fieldset } from '@headlessui/react';
 import { useForm, usePage } from '@inertiajs/react';
 import { SaveIcon } from 'lucide-react';
@@ -9,7 +10,7 @@ import { FormEvent } from 'react';
 import { toast } from 'sonner';
 
 export const DistrictForm = ({ dataId }: { dataId?: string }) => {
-    const { district, regencies } = usePage<any>().props;
+    const { district } = usePage<any>().props;
 
     const { data, setData, post, put, processing, errors, reset, transform } =
         useForm({
@@ -62,10 +63,9 @@ export const DistrictForm = ({ dataId }: { dataId?: string }) => {
                 <SelectComponent
                     label="Regencies"
                     placeholder="Select Regencies..."
-                    data={regencies?.map((item: any) => {
-                        return { label: item.name, value: item.id };
-                    })}
+                    fetchDataUrl={regencies.data().url}
                     dataSelected={data?.regency_id}
+                    selectedLabel={district?.regency?.name}
                     handleOnChange={(value: string) =>
                         setData('regency_id', value)
                     }

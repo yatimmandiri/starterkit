@@ -1,13 +1,14 @@
 import { ButtonComponent } from '@/components/partials/button-component';
 import { InputTextComponent } from '@/components/partials/input-component';
 import { SelectComponent } from '@/components/partials/select-component';
+import provinces from '@/routes/admin/core/regions/provinces';
 import regencies from '@/routes/admin/core/regions/regencies';
 import { Fieldset } from '@headlessui/react';
 import { useForm, usePage } from '@inertiajs/react';
 import { SaveIcon } from 'lucide-react';
 
 export const RegencyForm = ({ dataId }: { dataId?: string }) => {
-    const { regency, provinces } = usePage<any>().props;
+    const { regency } = usePage<any>().props;
 
     const { data, setData, post, put, processing, errors, transform } = useForm(
         {
@@ -54,11 +55,12 @@ export const RegencyForm = ({ dataId }: { dataId?: string }) => {
                 <SelectComponent
                     label="Provinces"
                     placeholder="Select Province..."
-                    data={provinces?.map((item: any) => {
-                        return { label: item.name, value: item.id };
-                    })}
                     dataSelected={data?.province_id}
-                    onChange={(value: string) => setData('province_id', value)}
+                    selectedLabel={regency?.province?.name}
+                    fetchDataUrl={provinces.data().url}
+                    handleOnChange={(value: string) =>
+                        setData('province_id', value)
+                    }
                     color={errors.province_id ? 'danger' : 'default'}
                     errors={errors.province_id && errors.province_id}
                     helperText={errors.province_id && errors.province_id}
