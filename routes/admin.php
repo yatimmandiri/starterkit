@@ -8,6 +8,13 @@ use App\Http\Controllers\Admin\Core\Region\VillageController;
 use App\Http\Controllers\Admin\Core\RoleController;
 use App\Http\Controllers\Admin\Core\UserController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\Sdm\ContractController;
+use App\Http\Controllers\Admin\Sdm\EmployeeController;
+use App\Http\Controllers\Admin\Sdm\GradeController;
+use App\Http\Controllers\Admin\Sdm\HolidayController;
+use App\Http\Controllers\Admin\Sdm\OfficeController;
+use App\Http\Controllers\Admin\Sdm\PositionController;
+use App\Http\Controllers\Admin\Sdm\ShiftController;
 use App\Http\Controllers\Admin\Settings\LogActivityController;
 use App\Http\Controllers\Admin\Settings\SiteSettingsController;
 use App\Http\Controllers\Auth\AuthController;
@@ -54,5 +61,33 @@ Route::prefix('admin')->as('admin.')->middleware(['auth', 'verified', 'auth.admi
             Route::get('villages/data', [VillageController::class, 'getData'])->name('villages.data');
             Route::resource('villages', VillageController::class);
         });
+    });
+
+    Route::prefix('sdm')->as('sdm.')->group(function () {
+        Route::put('offices/{office}/status', [OfficeController::class, 'updateStatus'])->name('offices.status');
+        Route::post('offices/reorder', [OfficeController::class, 'reorder'])->name('offices.reorder');
+        Route::get('offices/data', [OfficeController::class, 'getData'])->name('offices.data');
+        Route::resource('offices', OfficeController::class);
+
+        Route::get('grades/data', [GradeController::class, 'getData'])->name('grades.data');
+        Route::resource('grades', GradeController::class);
+
+        Route::put('positions/{position}/status', [PositionController::class, 'updateStatus'])->name('positions.status');
+        Route::post('positions/reorder', [PositionController::class, 'reorder'])->name('positions.reorder');
+        Route::get('positions/data', [PositionController::class, 'getData'])->name('positions.data');
+        Route::resource('positions', PositionController::class);
+
+        Route::get('contracts/data', [ContractController::class, 'getData'])->name('contracts.data');
+        Route::resource('contracts', ContractController::class);
+
+        Route::get('shifts/data', [ShiftController::class, 'getData'])->name('shifts.data');
+        Route::resource('shifts', ShiftController::class);
+
+        Route::get('holidays/data', [HolidayController::class, 'getData'])->name('holidays.data');
+        Route::resource('holidays', HolidayController::class);
+
+        Route::put('employees/{employee}/status', [EmployeeController::class, 'updateStatus'])->name('employees.status');
+        Route::get('employees/data', [EmployeeController::class, 'getData'])->name('employees.data');
+        Route::resource('employees', EmployeeController::class);
     });
 });

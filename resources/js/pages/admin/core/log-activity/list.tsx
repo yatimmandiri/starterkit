@@ -4,7 +4,6 @@ import {
     renderRowDate,
     renderRowHeader,
 } from '@/components/partials/dataTables/utils/dataTable-utils';
-import { DatePickerComponent } from '@/components/partials/datePicker-component';
 import activities from '@/routes/admin/logs/activities';
 import { formatDate } from '@/utils/formatDate';
 import { useState } from 'react';
@@ -73,8 +72,8 @@ export default function ListPage() {
     };
 
     return (
-        <div className="flex h-full flex-1 flex-col gap-4 overflow-x-auto rounded-xl p-4">
-            <div className="relative min-h-screen flex-1 overflow-hidden rounded-xl border border-sidebar-border/70 md:min-h-min dark:border-sidebar-border">
+        <div className="flex h-full flex-1 flex-col gap-6 overflow-x-auto p-6">
+            <div className="overflow-hidden rounded-xl border bg-background shadow-sm">
                 <DataTableProvider
                     columns={columns}
                     filterValue={filterValue}
@@ -82,23 +81,13 @@ export default function ListPage() {
                     setRefreshData={setRefreshData}
                     urlFetchData={activities.data().url}
                     formatDataExport={formatDataExport}
-                    withActions={false}
                 >
-                    <div className="flex flex-col space-y-4 px-4 pt-8 md:px-8">
-                        <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
-                            <DatePickerComponent
-                                label="Date"
-                                value={filterValue.filterDate}
-                                handleOnChange={(value: any) =>
-                                    setFilterValue({
-                                        ...filterValue,
-                                        filterDate: formatDate(value, 'custom'),
-                                    })
-                                }
-                            />
-                        </div>
-                    </div>
-                    <DataTableComponent buttonActive={{ export: false }} />
+                    <DataTableComponent
+                        buttonActive={{
+                            create: false,
+                            export: false,
+                        }}
+                    />
                 </DataTableProvider>
             </div>
         </div>

@@ -46,8 +46,8 @@ export default function ListPage() {
     };
 
     return (
-        <div className="flex h-full flex-1 flex-col gap-4 overflow-x-auto rounded-xl p-4">
-            <div className="relative min-h-screen flex-1 overflow-hidden rounded-xl border border-sidebar-border/70 md:min-h-min dark:border-sidebar-border">
+        <div className="flex h-full flex-1 flex-col gap-6 overflow-x-auto p-6">
+            <div className="overflow-hidden rounded-xl border bg-background shadow-sm">
                 <DataTableProvider
                     columns={columns}
                     filterValue={filterValue}
@@ -56,8 +56,8 @@ export default function ListPage() {
                     urlFetchData={villages.data().url}
                     formatDataExport={formatDataExport}
                 >
-                    <div className="flex flex-col space-y-4 px-4 pt-8 md:px-8">
-                        <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
+                    <div className="border-b bg-muted/30 p-6">
+                        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
                             <SelectComponent
                                 label="District"
                                 placeholder="Filter by district..."
@@ -72,7 +72,12 @@ export default function ListPage() {
                             />
                         </div>
                     </div>
-                    <DataTableComponent buttonActive={{ export: false }} />
+
+                    <DataTableComponent
+                        buttonActive={{
+                            export: false,
+                        }}
+                    />
                 </DataTableProvider>
             </div>
         </div>

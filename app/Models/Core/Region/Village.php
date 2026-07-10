@@ -55,18 +55,18 @@ class Village extends Model
         return $this->belongsTo(District::class);
     }
 
+    public function scopeSearch(Builder $query, ?string $search)
+    {
+        return $query->when($search, function ($q, $search) {
+            $q->where('name', 'like', "%{$search}%");
+        });
+    }
+
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
             ->logFillable()
             ->logOnlyDirty()
             ->useLogName('System');
-    }
-
-    public function scopeSearch(Builder $query, ?string $search)
-    {
-        return $query->when($search, function ($q, $search) {
-            $q->where('name', 'like', "%{$search}%");
-        });
     }
 }

@@ -6,8 +6,23 @@ import villages from '@/routes/admin/core/regions/villages';
 import roles from '@/routes/admin/core/roles';
 import users from '@/routes/admin/core/users';
 import activities from '@/routes/admin/logs/activities';
+import contracts from '@/routes/admin/sdm/contracts';
+import employees from '@/routes/admin/sdm/employees';
+import grades from '@/routes/admin/sdm/grades';
+import holidays from '@/routes/admin/sdm/holidays';
+import offices from '@/routes/admin/sdm/offices';
+import positions from '@/routes/admin/sdm/positions';
+import shifts from '@/routes/admin/sdm/shifts';
 import site from '@/routes/admin/settings/site';
-import { ChevronRight, CogIcon, CpuIcon, MapIcon } from 'lucide-react';
+import {
+    ChevronRight,
+    CogIcon,
+    CpuIcon,
+    DatabaseIcon,
+    MapIcon,
+    UsersIcon,
+    WalletIcon,
+} from 'lucide-react';
 
 export const NavigationList = [
     {
@@ -85,6 +100,117 @@ export const NavigationList = [
                         title: 'Log Activity',
                         href: activities.index().url,
                         permission: 'view-log-activity',
+                        icon: ChevronRight,
+                    },
+                ],
+            },
+        ],
+    },
+    {
+        title: 'SDM',
+        roles: ['Administrators'],
+        children: [
+            {
+                title: 'Employees',
+                roles: ['Administrators'],
+                icon: UsersIcon,
+                children: [
+                    {
+                        title: 'Karyawan',
+                        href: employees.index().url,
+                        permission: 'view-employee',
+                        icon: ChevronRight,
+                    },
+                    // {
+                    //     title: 'Mutasi',
+                    //     href: activities.index().url,
+                    //     permission: 'view-mutation',
+                    //     icon: ChevronRight,
+                    // },
+                    // {
+                    //     title: 'Riwayat Jabatan',
+                    //     href: activities.index().url,
+                    //     permission: 'view-history-position',
+                    //     icon: ChevronRight,
+                    // },
+                    // {
+                    //     title: 'Kontrak Kerja',
+                    //     href: activities.index().url,
+                    //     permission: 'view-contract',
+                    //     icon: ChevronRight,
+                    // },
+                ],
+            },
+            {
+                title: 'Attendances',
+                roles: ['Administrators'],
+                icon: CogIcon,
+                children: [
+                    // {
+                    //     title: 'Absensi Kehadiran',
+                    //     href: activities.index().url,
+                    //     permission: 'view-presence',
+                    //     icon: ChevronRight,
+                    // },
+                ],
+            },
+            {
+                title: 'Payroll',
+                icon: WalletIcon,
+                children: [
+                    // {
+                    //     title: 'Penggajian',
+                    //     href: activities.index().url,
+                    //     permission: 'view-payroll',
+                    //     icon: ChevronRight,
+                    // },
+                    // {
+                    //     title: 'Slip Gaji',
+                    //     href: activities.index().url,
+                    //     permission: 'view-salary-slip',
+                    //     icon: ChevronRight,
+                    // },
+                ],
+            },
+            {
+                title: 'Master Data',
+                roles: ['Administrators'],
+                icon: DatabaseIcon,
+                children: [
+                    {
+                        title: 'Offices',
+                        href: offices.index().url,
+                        permission: 'view-office',
+                        icon: ChevronRight,
+                    },
+                    {
+                        title: 'Grades',
+                        href: grades.index().url,
+                        permission: 'view-grade',
+                        icon: ChevronRight,
+                    },
+                    {
+                        title: 'Positions',
+                        href: positions.index().url,
+                        permission: 'view-position',
+                        icon: ChevronRight,
+                    },
+                    {
+                        title: 'Contracts',
+                        href: contracts.index().url,
+                        permission: 'view-contract',
+                        icon: ChevronRight,
+                    },
+                    {
+                        title: 'Shift',
+                        href: shifts.index().url,
+                        permission: 'view-shift',
+                        icon: ChevronRight,
+                    },
+                    {
+                        title: 'Holiday',
+                        href: holidays.index().url,
+                        permission: 'view-holiday',
                         icon: ChevronRight,
                     },
                 ],

@@ -39,8 +39,8 @@ export default function ListPage() {
     };
 
     return (
-        <div className="flex h-full flex-1 flex-col gap-4 overflow-x-auto rounded-xl p-4">
-            <div className="relative min-h-screen flex-1 overflow-hidden rounded-xl border border-sidebar-border/70 md:min-h-min dark:border-sidebar-border">
+        <div className="flex h-full flex-1 flex-col gap-6 overflow-x-auto p-6">
+            <div className="overflow-hidden rounded-xl border bg-background shadow-sm">
                 <DataTableProvider
                     columns={columns}
                     filterValue={filterValue}
@@ -49,7 +49,11 @@ export default function ListPage() {
                     urlFetchData={roles.data().url}
                     formatDataExport={formatDataExport}
                 >
-                    <DataTableComponent buttonActive={{ export: false }} />
+                    <DataTableComponent
+                        buttonActive={{
+                            export: false,
+                        }}
+                    />
                 </DataTableProvider>
             </div>
         </div>

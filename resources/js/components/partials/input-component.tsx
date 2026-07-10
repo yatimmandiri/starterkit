@@ -39,7 +39,7 @@ interface InputTextComponentProps {
 
 export const InputTextComponent = ({
     type = 'text',
-    placeholder = 'Placeholder',
+    placeholder = '',
     className = '',
     label,
     errors,

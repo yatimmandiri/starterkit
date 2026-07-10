@@ -1,0 +1,133 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\Core\User;
+use App\Models\Sdm\Employee;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+
+class EmployeeSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        collect([
+            ["name" => "TRIAN BASOFI ROHMAN", "phone" => "62816567636", "email" => "trianbasofirohman@gmail.com", "gender" => "L", "position_id" => "85", "address" => "CITRA MANDIRI REGENCY B1-03 SIDOARJO", "office_id" => "1"],
+            ["name" => "DONNY DAMARA DERISTYA", "phone" => "6285731154100", "email" => "donnydderistya@gmail.com", "gender" => "L", "position_id" => "23", "address" => "-", "office_id" => "1"],
+            ["name" => "ROSY SUDARNO, SH", "phone" => "6285604888125", "email" => "rosy_sudarna@yahoo.com", "gender" => "L", "position_id" => "17", "address" => "JL. H. SYUKUR 2 NO. 50 DS. SEDATI GEDE, KEC. SEDATI, KAB. SIDOARJO, PROVINSI JAWA TIMUR", "office_id" => "1"],
+            ["name" => "NIKO HAJAR DEWANTARA", "phone" => "62859171672880", "email" => "nikohajar@gmail.com", "gender" => "L", "position_id" => "41", "address" => "DK. GOGOR TOL 17 C, JAJAR TUNGGAL, WIYUNG, SURABAYA", "office_id" => "1"],
+            ["name" => "IIN MUFARIDA", "phone" => "6285708028808", "email" => "iinmufarida@gmail.com", "gender" => "P", "position_id" => "148", "address" => "PACIRAN LAMONGAN", "office_id" => "1"],
+            ["name" => "IMAM FAHRUDIN", "phone" => "6281335033503", "email" => "imam.mandiri94@gmail.com", "gender" => "L", "position_id" => "139", "address" => "-", "office_id" => "1"],
+            ["name" => "MUKLIS", "phone" => "6285331078031", "email" => "hp.muklis@gmail.com", "gender" => "L", "position_id" => "78", "address" => "-", "office_id" => "1"],
+            ["name" => "M IRFAN YUSUF", "phone" => "6281299850201", "email" => "mirfanyusuf18@gmail.com", "gender" => "L", "position_id" => "43", "address" => "JL. KENDANGSARI LEBAR NO 73 B", "office_id" => "1"],
+            ["name" => "MIFTAHUR RAHMAN", "phone" => "6281330003450", "email" => "mifthr@gmail.com", "gender" => "L", "position_id" => "150", "address" => "-", "office_id" => "1"],
+            ["name" => "BASILIA PRAKARTINA", "phone" => "6281233299302", "email" => "basiliawibawa@gmail.com", "gender" => "P", "position_id" => "47", "address" => "CITRA MANDIRI REGENCY BLOK B1 NO.03 SIDOARJO", "office_id" => "1"],
+            ["name" => "ROHMATUL MUHROJAH", "phone" => "6281231944737", "email" => "rahmamukhroja88@gmail.com", "gender" => "P", "position_id" => "83", "address" => "-", "office_id" => "1"],
+            ["name" => "FARIDA FAZA", "phone" => "6282131467204", "email" => "fasa0346@gmail.com", "gender" => "P", "position_id" => "45", "address" => "-", "office_id" => "1"],
+            ["name" => "FARICHATIN NADHIROH", "phone" => "6282245066242", "email" => "farichatinn@gmail.com", "gender" => "P", "position_id" => "50", "address" => "PONDOK NIRWANA ANGGASWANGI CLUSTER GLORIOSA G24 ANGGASWANGI SUKODONO SIDOARJO", "office_id" => "1"],
+            ["name" => "TETA DWI ARTIKA", "phone" => "6281288856822", "email" => "artika.teta@gmail.com", "gender" => "P", "position_id" => "59", "address" => "-", "office_id" => "1"],
+            ["name" => "ADHEKE LISTA MARDININGRUM", "phone" => "6285790905719", "email" => "adhekelista25@gmail.com", "gender" => "P", "position_id" => "141", "address" => "PACARKEMBANG KITIRAN NO. 5 RT 04 RW 07 PACARKEMBANG TAMBAKSARI SURABAYA", "office_id" => "1"],
+            ["name" => "SARIONO", "phone" => "6281232088348", "email" => "sar3cop73@gmail.com", "gender" => "L", "position_id" => "89", "address" => "-", "office_id" => "1"],
+            ["name" => "M SOFYAN ANWAR", "phone" => "6282329464931", "email" => "muhammadd1205@gmail.com", "gender" => "L", "position_id" => "80", "address" => "-", "office_id" => "1"],
+            ["name" => "IMAM BUHARI MUSLIM", "phone" => "6285791119883", "email" => "hrsyaikhon@gmail.com", "gender" => "L", "position_id" => "79", "address" => "DSN. AIR MATA DS. JUNGKARANG, KEC. JRENGIK, KAB. SAMPANG", "office_id" => "1"],
+            ["name" => "DESSY WULANDARI SYAHPUTRI YUSUF", "phone" => "6285730739325", "email" => "dessywulandarisy@gmail.com", "gender" => "P", "position_id" => "46", "address" => "SIDOARJO", "office_id" => "1"],
+            ["name" => "M. NUR KHOLIS", "phone" => "6283833276376", "email" => "nucoselalunuco@gmail.com", "gender" => "L", "position_id" => "27", "address" => "GANG TEMPUR", "office_id" => "1"],
+            ["name" => "HEVI METALIKA", "phone" => "628567288757", "email" => "hevimetalikaa@gmail.com", "gender" => "P", "position_id" => "25", "address" => "PALANG, TUBAN", "office_id" => "1"],
+            ["name" => "ACHMAD AJI PRASETYO", "phone" => "6285746632248", "email" => "achmad.4ji@gmail.com", "gender" => "L", "position_id" => "51", "address" => "-", "office_id" => "1"],
+            ["name" => "SAIFANUHA AL FIQRI", "phone" => "6281237721558", "email" => "saifanelfikri7@gmail.com", "gender" => "L", "position_id" => "146", "address" => "-", "office_id" => "1"],
+            ["name" => "AGHLUL JANNATUN", "phone" => "6281703461473", "email" => "aghlul.jannatun@gmail.com", "gender" => "P", "position_id" => "55", "address" => "-", "office_id" => "1"],
+            ["name" => "M KHOLILI", "phone" => "6281233913370", "email" => "assegafkholili@gmail.com", "gender" => "L", "position_id" => "90", "address" => "-", "office_id" => "1"],
+            ["name" => "MOCH IRSANDY RUSLI", "phone" => "6285730151434", "email" => "irsandyrusli14@gmail.com", "gender" => "L", "position_id" => "57", "address" => "-", "office_id" => "1"],
+            ["name" => "MOHAMMAD FAQIH QODRIL AKBAR", "phone" => "6285259350713", "email" => "faqihqodril@gmail.com", "gender" => "L", "position_id" => "33", "address" => "-", "office_id" => "1"],
+            ["name" => "IKHWANUL IRFAN", "phone" => "628973950017", "email" => "ikhwanulipunk11@gmail.com", "gender" => "L", "position_id" => "63", "address" => "-", "office_id" => "1"],
+            ["name" => "MULYADI", "phone" => "6281332304732", "email" => "mulyadiatsaury@gmail.com", "gender" => "L", "position_id" => "156", "address" => "-", "office_id" => "1"],
+            ["name" => "BAGUS SETIAWAN", "phone" => "6285155245898", "email" => "bagus.setiawan21@gmail.com", "gender" => "L", "position_id" => "20", "address" => "00000", "office_id" => "1"],
+            ["name" => "YUWAN EBIT SAPUTRO", "phone" => "6282311489656", "email" => "yuwan.ebit@unida.gontor.ac.id", "gender" => "L", "position_id" => "44", "address" => "MALANG", "office_id" => "1"],
+            ["name" => "SAFINATUN NISA", "phone" => "6285606078112", "email" => "safinanisa1010@gmail.com", "gender" => "P", "position_id" => "54", "address" => "KENDANGSARI LEBAR NO 73 SURABAYA", "office_id" => "1"],
+            ["name" => "NENENG THOYYIBBAH", "phone" => "6283105552621", "email" => "nenengthoyibbah@gmail.com", "gender" => "P", "position_id" => "40", "address" => "-", "office_id" => "1"],
+            ["name" => "BINTI NUR ROHMAH", "phone" => "6285790422031", "email" => "b.nurrohmah4767@gmail.com", "gender" => "P", "position_id" => "54", "address" => "-", "office_id" => "1"],
+            ["name" => "LAILATUL MUHTARIYAH", "phone" => "6283816944720", "email" => "lailastikom@gmail.com", "gender" => "P", "position_id" => "46", "address" => "BANYUWANGI", "office_id" => "1"],
+            ["name" => "HILYATIN NUR FAUDLIYAH", "phone" => "6285736946017", "email" => "hilyafaudliyah1@gmail.com", "gender" => "P", "position_id" => "116", "address" => "-", "office_id" => "1"],
+            ["name" => "MUHAMMAD IQBAL", "phone" => "6281359999060", "email" => "iqbalmi1717499@gmail.com", "gender" => "L", "position_id" => "38", "address" => "-", "office_id" => "1"],
+            ["name" => "MUKH ABDUL MUJIB", "phone" => "6282143599960", "email" => "mamad.mujib@gmail.com", "gender" => "L", "position_id" => "19", "address" => "GEMBONG SAWAH BARAT GG 3/1", "office_id" => "1"],
+            ["name" => "NADIA SAFIR SHOUMI", "phone" => "6282140684757", "email" => "nadia121398@gmail.com", "gender" => "P", "position_id" => "59", "address" => "-", "office_id" => "1"],
+            ["name" => "ZUHDA ELFAIRUZA NURANI", "phone" => "62859180714576", "email" => "zuhdaelfairuza@gmail.com", "gender" => "P", "position_id" => "60", "address" => "KEMLAGI SELATAN, RT/RW 03/01, DS. KEMLAGI, KEC. KEMLAGI, KAB. MOJOKERTO", "office_id" => "1"],
+            ["name" => "NURUL KHASANAH", "phone" => "6285607069629", "email" => "nurul.dkv@gmail.com", "gender" => "P", "position_id" => "37", "address" => "-", "office_id" => "1"],
+            ["name" => "M CHAMDANI S", "phone" => "6289676667010", "email" => "muhammadhamdani017@gmail.com", "gender" => "L", "position_id" => "86", "address" => "JALAN PULO TEGAL SARI IV NO 9 SURABAYA", "office_id" => "1"],
+            ["name" => "AJI BIMANTORO", "phone" => "6287856780933", "email" => "ajibimantoro10@gmail.com", "gender" => "L", "position_id" => "86", "address" => "-", "office_id" => "1"],
+            ["name" => "KHOZINATUL BAHRODIN", "phone" => "6282132853707", "email" => "khozinatuel@gmail.com", "gender" => "L", "position_id" => "49", "address" => "JL. BUKIT JERAWAT ASRI NO. 27 RT.08 RW.03 KEL. BABAT JERAWAT KEC. PAKAL KOTA SURABAYA", "office_id" => "1"],
+            ["name" => "ABD MUTHI SAID", "phone" => "6282245670709", "email" => "abdmuthisaid@gmail.com", "gender" => "L", "position_id" => "35", "address" => "BUNGURASIH UTARA WARU SIDOARJO", "office_id" => "1"],
+            ["name" => "M DZULFIKRI", "phone" => "6285780906100", "email" => "mdfikri08@gmail.com", "gender" => "L", "position_id" => "32", "address" => "-", "office_id" => "1"],
+            ["name" => "DIAN MULDIANTI", "phone" => "6285792933676", "email" => "dearrdian@gmail.com", "gender" => "P", "position_id" => "114", "address" => "-", "office_id" => "1"],
+            ["name" => "NADILA WULAN CAHYANI", "phone" => "628994291548", "email" => "nadilawulancahyani21@gmail.com", "gender" => "P", "position_id" => "119", "address" => "-", "office_id" => "1"],
+            ["name" => "SOFIS AMBARWATI DAULAY", "phone" => "62881036303735", "email" => "sofisambarwati21@gmail.com", "gender" => "P", "position_id" => "39", "address" => "TALANGPADANG TANGGAMUS LAMPUNG", "office_id" => "1"],
+            ["name" => "SRI ADAM DEWI", "phone" => "6285604354035", "email" => "dewisetyaningrat@gmail.com", "gender" => "P", "position_id" => "58", "address" => "NAJWA REGENCY SAWOCANGKRING WONOAYU SIDOARJO", "office_id" => "1"],
+            ["name" => "ANIZA LISTIANTI", "phone" => "62895395090100", "email" => "anizalistianti99@gmail.com", "gender" => "P", "position_id" => "53", "address" => "TRENGGALEK", "office_id" => "1"],
+            ["name" => "USWATUL FITRIYAH", "phone" => "6288221779508", "email" => "fitriauswa15@gmail.com", "gender" => "P", "position_id" => "51", "address" => "-", "office_id" => "1"],
+            ["name" => "SUBIYANTO", "phone" => "628568675675", "email" => "subiyanto933@gmail.com", "gender" => "L", "position_id" => "80", "address" => "JL. PUDAK TANJUNG SEPREH MAOSPATI MAGETAN", "office_id" => "1"],
+            ["name" => "RAFLI FIRMANSYAH", "phone" => "62895628082640", "email" => "firmansyahrafli964@gmail.com", "gender" => "L", "position_id" => "53", "address" => "JL. KALIANAK TIMUR GG BLK NO 24A SURABAYA", "office_id" => "1"],
+            ["name" => "TOTOK DARMAWAN", "phone" => "6288805598475", "email" => "totokdarmawan4@gmail.com", "gender" => "L", "position_id" => "54", "address" => "-", "office_id" => "1"],
+            ["name" => "SANTOSO ADI PANGESTU", "phone" => "6285811464832", "email" => "santosoadi63889@gmail.com", "gender" => "L", "position_id" => "54", "address" => "-", "office_id" => "1"],
+            ["name" => "INDAH YANI", "phone" => "6283854619198", "email" => "yanitwin2@gmail.com", "gender" => "P", "position_id" => "48", "address" => "JEMBER", "office_id" => "1"],
+            ["name" => "MIFTAH MARTA DIANSYAH", "phone" => "6282132136337", "email" => "miftahmdiansyah@gmail.com", "gender" => "L", "position_id" => "120", "address" => "JL. TAMAN DUPAK BANDAREJO 25", "office_id" => "1"],
+            ["name" => "RIZKA ALYA MIRANDA", "phone" => "6285851947877", "email" => "rizkaalyamiranda3@gmail.com", "gender" => "P", "position_id" => "113", "address" => "-", "office_id" => "1"],
+            ["name" => "ILHAM", "phone" => "6282111480543", "email" => "ilhamenjoyilham@gmail.com", "gender" => "L", "position_id" => "63", "address" => "-", "office_id" => "1"],
+            ["name" => "ABDUL ROKIB", "phone" => "6281232867866", "email" => "roqibads2012@gmail.com", "gender" => "L", "position_id" => "82", "address" => "-", "office_id" => "1"],
+            ["name" => "CITRA AYUNINGTYAS", "phone" => "6285749172270", "email" => "citraayuningtiyas28@gmail.com", "gender" => "P", "position_id" => "114", "address" => "-", "office_id" => "1"],
+            ["name" => "SANTOSO", "phone" => "62895397084430", "email" => "santosungan1@gmail.com", "gender" => "L", "position_id" => "63", "address" => "-", "office_id" => "1"],
+            ["name" => "AIWA DWI ANGGRAINI", "phone" => "6281917306837", "email" => "aiwadwi23@gmail.com", "gender" => "P", "position_id" => "137", "address" => "-", "office_id" => "1"],
+            ["name" => "IKA FAZTIN CAHYANTI", "phone" => "6281280036650", "email" => "ikafaztin1@gmail.com", "gender" => "P", "position_id" => "62", "address" => "-", "office_id" => "1"],
+            ["name" => "ROMI KURNIAWAN", "phone" => "6281335356538", "email" => "romk7353@gmail.com", "gender" => "L", "position_id" => "80", "address" => "-", "office_id" => "1"],
+            ["name" => "SUTIONO", "phone" => "6282141160263", "email" => "sutionods@gmail.com", "gender" => "L", "position_id" => "90", "address" => "-", "office_id" => "1"],
+            ["name" => "RAHMAT PURWANTO", "phone" => "6281345265344", "email" => "rahmatekis@gmail.com", "gender" => "L", "position_id" => "80", "address" => "KEMIRI LOR, RT.06 RW.02, KEPUHKEMIRI, KEC. TULANGAN, KABUPATEN SIDOARJO, JAWA TIMUR 61273", "office_id" => "1"],
+            ["name" => "RIZAL REFANDI", "phone" => "6282135784427", "email" => "rizalrefandi1236@gmail.com", "gender" => "L", "position_id" => "90", "address" => "JL. BRAWIJAYA NO.7A", "office_id" => "1"],
+            ["name" => "MUHAMMAD ZAINURI", "phone" => "6285225225442", "email" => "zainurizain86@gmail.com", "gender" => "L", "position_id" => "84", "address" => "-", "office_id" => "1"],
+            ["name" => "INDAH YASA", "phone" => "6281398602423", "email" => "indahyasa3012@gmail.com", "gender" => "P", "position_id" => "43", "address" => "-", "office_id" => "1"],
+            ["name" => "RIZKY NUR RAHMA", "phone" => "6281231771314", "email" => "rizkynrahma123@gmail.com", "gender" => "P", "position_id" => "34", "address" => "PANDEAN TANGKIL WLINGI BLITAR", "office_id" => "1"],
+            ["name" => "FIRMAN ALEX RAMADANI", "phone" => "6281234020617", "email" => "firmanalexramadani@gmail.com", "gender" => "L", "position_id" => "107", "address" => "12345", "office_id" => "1"],
+            ["name" => "AAN KHUNAEFI", "phone" => "6285643032906", "email" => "adibahaan@gmail.com", "gender" => "L", "position_id" => "116", "address" => "-", "office_id" => "1"],
+            ["name" => "GRACE PUTRI ARIA", "phone" => "6285157663025", "email" => "idenyagrace@gmail.com", "gender" => "P", "position_id" => "61", "address" => "TAMAN SUKO ASRI BLOK C-9, SUKO, SUKODONO, SIDOARJO", "office_id" => "1"],
+            ["name" => "ARI GUNAWAN", "phone" => "6285961545601", "email" => "arigunawanencek@gmail.com", "gender" => "L", "position_id" => "92", "address" => "PACAR KEMBANG IV NO. 32", "office_id" => "1"],
+            ["name" => "ARMA ANDI KUSUMA", "phone" => "6289637676441", "email" => "armaandikusuma247@gmail.com", "gender" => "L", "position_id" => "24", "address" => "-", "office_id" => "1"],
+            ["name" => "NUR HIDAYATUL NIHLA", "phone" => "6289682024059", "email" => "nhnihla@gmail.com", "gender" => "P", "position_id" => "118", "address" => "-", "office_id" => "1"],
+            ["name" => "AKHMAD DANY ARDAVIE", "phone" => "6287864267654", "email" => "ardavie48@gmail.com", "gender" => "L", "position_id" => "38", "address" => "JL. FLAMBOYAN RT 01 RW 03 GANTING, GEDANGAN, SIDOARJO", "office_id" => "1"],
+            ["name" => "KANTOR PUSAT JAMBANGAN", "phone" => "6287754753944", "email" => "perbankan@yatimmandiri.org", "gender" => "P", "position_id" => "96", "address" => "-", "office_id" => "1"],
+            ["name" => "RIFKY MARDA PRATAMA", "phone" => "6285723753848", "email" => "rifky.marda63@gmail.com", "gender" => "L", "position_id" => "46", "address" => "-", "office_id" => "1"],
+            ["name" => "NUNIK MUHAYANI", "phone" => "6285808464065", "email" => "hallonunik@gmail.com", "gender" => "P", "position_id" => "114", "address" => "-", "office_id" => "1"],
+            ["name" => "HAFIZZUDIN SIFAULLOH", "phone" => "6285755000708", "email" => "zoedin1104@gmail.com", "gender" => "L", "position_id" => "86", "address" => "KEDEN, ARGOSUKO, PONCOKUSUMO", "office_id" => "1"],
+            ["name" => "DINA SAFITRI YUNUS", "phone" => "6282141322651", "email" => "yunusdinasafitri@gmail.com", "gender" => "P", "position_id" => "43", "address" => "RT.01 DURIAN LUNCUK, JAMBI", "office_id" => "1"],
+            ["name" => "MOHAMAD NUR KHOTIB", "phone" => "6285732843539", "email" => "khotibnur118@gmail.com", "gender" => "L", "position_id" => "129", "address" => "-", "office_id" => "1"],
+            ["name" => "ANJAR SUSILO", "phone" => "6282140794228", "email" => "anjarsusilo2003@gmail.com", "gender" => "L", "position_id" => "63", "address" => "-", "office_id" => "1"],
+            ["name" => "RIMA CHUSNUL MAGFIROH", "phone" => "6285732197963", "email" => "rima.chusnul@gmail.com", "gender" => "P", "position_id" => "40", "address" => "-", "office_id" => "1"],
+            ["name" => "TEGAR PERMANA PUTRA", "phone" => "6282143316913", "email" => "tegarputra06092002@gmail.com", "gender" => "L", "position_id" => "37", "address" => "JL TUNGGUL AMETUNG GG SUMBER NO50 RT 02 RW 08 CANDIRENGGO SINGOSARI MALANG", "office_id" => "1"],
+            ["name" => "MOKHAMAD FARIS JAUHARI", "phone" => "6281326024789", "email" => "farizjauhari@gmail.com", "gender" => "L", "position_id" => "116", "address" => "-", "office_id" => "1"],
+            ["name" => "HARDI SETYA BHAKTI", "phone" => "6282141417867", "email" => "hardisetya48@gmail.com", "gender" => "L", "position_id" => "80", "address" => "-", "office_id" => "1"],
+            ["name" => "SUGENG RIYADI", "phone" => "6285730532620", "email" => "sugengriyady5@gmail.com", "gender" => "L", "position_id" => "1", "address" => "-", "office_id" => "1"],
+            ["name" => "AINUL MAHBUB", "phone" => "6281216507158", "email" => "ainulmahbub.yatimmandiri@gmail.com", "gender" => "L", "position_id" => "138", "address" => "-", "office_id" => "1"],
+            ["name" => "ANDIK KRISDIARMANTO", "phone" => "6282139939427", "email" => "andik.suksesmulia@gmail.com", "gender" => "L", "position_id" => "5", "address" => "-", "office_id" => "1"],
+            ["name" => "M ARIF SAG", "phone" => "6282332552039", "email" => "m.arif240873@gmail.com", "gender" => "L", "position_id" => "133", "address" => "SURABAYA", "office_id" => "1"],
+            ["name" => "KHUSNUL MAARIF", "phone" => "628979859466", "email" => "kkhusnulmaarif@gmail.com", "gender" => "L", "position_id" => "80", "address" => "JL. GUBERNUR SURYO XI B 50 GRESIK", "office_id" => "1"],
+            ["name" => "NUR HASAN MUSTOFA", "phone" => "6285745678974", "email" => "nurhasanmusthofa@gmail.com", "gender" => "L", "position_id" => "149", "address" => "-", "office_id" => "1"],
+            ["name" => "NENI NUR AINI", "phone" => "62229292511", "email" => "neninur51@gmail.com", "gender" => "L", "position_id" => "162", "address" => "-", "office_id" => "1"],
+            ["name" => "KHOTIB", "phone" => "6281232690886", "email" => "chotiebpii@gmail.com", "gender" => "L", "position_id" => "2", "address" => "JALAN ANGGREK II/57 BB AGUNG NEGARA JEMBRANA BALI", "office_id" => "1"],
+            ["name" => "RIFQI ARIFATUL ILMIYAH", "phone" => "6282257832892", "email" => "rifqiarifatulilmiyah@gmail.com", "gender" => "P", "position_id" => "46", "address" => "-", "office_id" => "1"],
+            ["name" => "RATNA NUR MULYATI", "phone" => "6289659724010", "email" => "nurratna960@gmail.com", "gender" => "P", "position_id" => "154", "address" => "-", "office_id" => "1"],
+            ["name" => "AKHMAD KHARIS NUR'AINI", "phone" => "6285648525096", "email" => "ahmadkharishmec@gmail.com", "gender" => "L", "position_id" => "154", "address" => "-", "office_id" => "1"],
+            ["name" => "UMI ALFIATURROHMAH", "phone" => "6285219663646", "email" => "ualfiaturrohmah@gmail.com", "gender" => "P", "position_id" => "120", "address" => "-", "office_id" => "1"],
+            ["name" => "MUHAMMAD ALI ROSYIDI", "phone" => "6281331771830", "email" => "rosyidia65@gmail.com", "gender" => "L", "position_id" => "155", "address" => "-", "office_id" => "1"],
+            ["name" => "KEVIN MAULANA PRASETYO", "phone" => "62895340034082", "email" => "kevinmaulana379@gmail.com", "gender" => "L", "position_id" => "38", "address" => "-", "office_id" => "1"],
+            ["name" => "ILYAS DWI KURNIAWAN", "phone" => "6283845464384", "email" => "ilyasdwikurniawan45@gmail.com", "gender" => "L", "position_id" => "28", "address" => "-", "office_id" => "1"],
+            ["name" => "KALYA AQILATA FAHRUDDIN", "phone" => "6285259079749", "email" => "fahruddinkalya@gmail.com", "gender" => "P", "position_id" => "154", "address" => "-", "office_id" => "1"]
+        ])->each(function ($data) {
+            Employee::create($data);
+            User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => Hash::make(uniqid()),
+            ])->assignRole('Users');
+        });
+    }
+}
